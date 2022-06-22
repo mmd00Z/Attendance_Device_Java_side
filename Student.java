@@ -20,13 +20,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Student extends JPanel {
-	private JLabel row 			= null;
+	JLabel row 			= null;
 	private JLabel firstName 	= null;
 	private JLabel lastName 	= null;
 	private JLabel nationalCode = null;
 	private String fatherName 	= null;
 	private String numberPhone 	= null;
-	private String className 			= null;
+	private String className 	= null;
+	JLabel lblTime		= null;;
 	JLabel lblView;
 	JLabel lblDelete;
 	private JLabel chekPresent;
@@ -34,7 +35,7 @@ public class Student extends JPanel {
     public enum StudentProperty {ROW, FIRST_NAME, LAST_NAME, FATHER_NAME, NATIONAL_CODE, NUMBER_PHONE, CLASS_NAME};
     
     public void graphicalInit(String row_index, String Fname, String Lname, String national_code){
-    	this.setBounds(0, 0, 1090, 40);
+    	this.setBounds(0, 0, 1100, 40);
     	setLayout(null);
     	
     	Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
@@ -73,7 +74,7 @@ public class Student extends JPanel {
     	nationalCode.setOpaque(true);
     	nationalCode.setHorizontalAlignment(SwingConstants.CENTER);
     	nationalCode.setFont(new Font("Consolas", Font.BOLD, ۲۰));
-    	nationalCode.setBounds(620, 0, 200, 40);
+    	nationalCode.setBounds(620, 0, 170, 40);
     	nationalCode.setBorder(border);
     	add(nationalCode);
     	
@@ -88,33 +89,41 @@ public class Student extends JPanel {
     	});
     	lblView.setHorizontalAlignment(SwingConstants.CENTER);
     	lblView.setFont(new Font("Tahoma", Font.BOLD, ۱۸));
-    	lblView.setBounds(910, 0, 90, 40);
+    	lblView.setBounds(1010, 0, 90, 40);
     	lblView.setBorder(border_view);
     	add(lblView);
     	
-    	lblDelete = new JLabel("");
-    	lblDelete.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\trash-free-icon-font.png"));
-    	lblDelete.setForeground(new Color(242, 170, 76));
-    	lblDelete.addMouseListener(new MouseAdapter() {
-    		@Override
-    		public void mouseClicked(MouseEvent e) {
-    			SchoolClass.deleteStudents(Student.this);
-    		}
-    	});
-    	lblDelete.setHorizontalAlignment(SwingConstants.CENTER);
-    	lblDelete.setFont(new Font("Tahoma", Font.BOLD, ۱۸));
-    	lblDelete.setBounds(1000, 0, 90, 40);
-    	lblDelete.setBorder(border_delete);
-    	add(lblDelete);
-    	//scaleCheckBoxIcon(chckbxPresent);
-    	lblDelete.setBorder(border);
+//    	lblDelete = new JLabel("");
+//    	lblDelete.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\trash-free-icon-font.png"));
+//    	lblDelete.setForeground(new Color(242, 170, 76));
+//    	lblDelete.addMouseListener(new MouseAdapter() {
+//    		@Override
+//    		public void mouseClicked(MouseEvent e) {
+//    			SchoolClass.deleteStudents(Student.this);
+//    		}
+//    	});
+//    	lblDelete.setHorizontalAlignment(SwingConstants.CENTER);
+//    	lblDelete.setFont(new Font("Tahoma", Font.BOLD, ۱۸));
+//    	lblDelete.setBounds(1000, 0, 90, 40);
+//    	lblDelete.setBorder(border_delete);
+//    	add(lblDelete);
+//    	//scaleCheckBoxIcon(chckbxPresent);
+//    	lblDelete.setBorder(border);
     	
     	chekPresent = new JLabel("");
     	chekPresent.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture5.png"));
     	chekPresent.setHorizontalAlignment(SwingConstants.CENTER);
-    	chekPresent.setBounds(820, 0, 90, 40);
+    	chekPresent.setBounds(920, 0, 90, 40);
     	add(chekPresent);
     	chekPresent.setBorder(border);
+    	
+    	lblTime = new JLabel("00:00:00");
+    	lblTime.setOpaque(true);
+    	lblTime.setHorizontalAlignment(SwingConstants.CENTER);
+    	lblTime.setForeground(App.foreground_color);
+    	lblTime.setFont(new Font("Consolas", Font.BOLD, ۲۰));
+    	lblTime.setBounds(790, 0, 130, 40);
+    	add(lblTime);
     	
     	if((row_index.charAt(0)-48)%2 != 0) {
     		System.out.println("o");
@@ -123,7 +132,8 @@ public class Student extends JPanel {
     		lastName.setBackground(new Color(50, 50, 50));
     		nationalCode.setBackground(new Color(50, 50, 50));
     		lblView.setBackground(new Color(50, 50, 50));
-    		lblDelete.setBackground(new Color(50, 50, 50));
+    		lblTime.setBackground(new Color(50, 50, 50));
+//    		lblDelete.setBackground(new Color(50, 50, 50));
     		//chckbxPresent.setBackground(new Color(50, 50, 50));
     		this.setBackground(new Color(50, 50, 50));
     	}
@@ -134,7 +144,8 @@ public class Student extends JPanel {
     		lastName.setBackground(new Color(16, 24, 32));
     		nationalCode.setBackground(new Color(16, 24, 32));
     		lblView.setBackground(new Color(16, 24, 32));
-    		lblDelete.setBackground(new Color(16, 24, 32));
+    		lblTime.setBackground(new Color(16, 24, 32));
+//    		lblDelete.setBackground(new Color(16, 24, 32));
     		//chckbxPresent.setBackground(new Color(16, 24, 32));
     		this.setBackground(new Color(16, 24, 32));
     	}
@@ -268,14 +279,16 @@ public class Student extends JPanel {
 	
 	public void setToLOP_Mode() {
 		chekPresent.setVisible(false);
-		lblView.setBounds(820, 1, 90, 38);
-		lblDelete.setBounds(910, 0, 90, 40);	
+		lblTime.setVisible(false);
+		lblView.setBounds(790, 1, 90, 38);
+//		lblDelete.setBounds(910, 0, 90, 40);	
 	}
 	
 	public void setToAL_Mode() {
 		chekPresent.setVisible(true);
-		lblView.setBounds(910, 0, 90, 40);
-		lblDelete.setBounds(1000, 0, 90, 40);	
+		lblTime.setVisible(true);
+		lblView.setBounds(1010, 0, 90, 40);
+//		lblDelete.setBounds(1000, 0, 90, 40);	
 	}
 
 }

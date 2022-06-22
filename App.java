@@ -57,6 +57,10 @@ import java.time.LocalDateTime;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.swing.JComboBox;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -127,6 +131,8 @@ public class App implements Serializable{
 	private JButton btnSubmit_add;
 	private JLabel lblAddStatus;
 	private JSpinner spinnerYear;
+	private JComboBox comboMonths;
+	private JSpinner spinnerDay;
 	private LocalDateTime date_time					= null;
 	private JLabel lbl_tbl_Present 					= new JLabel("");
 	private LocalDateTime dateTime;
@@ -212,6 +218,7 @@ public class App implements Serializable{
 		panel.add(lblDate);
 		
 		rdbtnToday = new JRadioButton("today");
+		rdbtnToday.setSelected(true);
 		rdbtnToday.setForeground(new Color(242, 170, 76));
 		rdbtnToday.setBackground(new Color(50, 50, 50));
 		rdbtnToday.addActionListener(new ActionListener() {
@@ -238,9 +245,14 @@ public class App implements Serializable{
 		panel.add(rdbtnYesterday);
 		rdbtnYesterday.setFocusPainted(false);
 		
-		JSpinner spinnerDay = new JSpinner();
+		
+		date_time = LocalDateTime.now(); //////////////////////////////////// update time
+		
+		
+		spinnerDay = new JSpinner();
 		spinnerDay.setFont(new Font("Tahoma", Font.PLAIN, ۱۶));
 		spinnerDay.setBounds(317, 30, 70, 29);
+		spinnerDay.setValue(date_time.getDayOfMonth());
 		panel.add(spinnerDay);
 		
 		spinnerYear = new JSpinner();
@@ -248,6 +260,7 @@ public class App implements Serializable{
 		spinnerYear.setBackground(new Color(255, 255, 255));
 		spinnerYear.setFont(new Font("Tahoma", Font.PLAIN, ۱۶));
 		spinnerYear.setBounds(119, 30, 64, 29);
+		spinnerYear.setValue(date_time.getYear());
 		panel.add(spinnerYear);
 		
 		JLabel lblDay = new JLabel("Day");
@@ -486,7 +499,7 @@ public class App implements Serializable{
 		lbl_tbl_VationalCode.setOpaque(true);
 		lbl_tbl_VationalCode.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_tbl_VationalCode.setFont(new Font("Consolas", Font.BOLD, ۲۰));
-		lbl_tbl_VationalCode.setBounds(620, 114, 200, 40);
+		lbl_tbl_VationalCode.setBounds(620, 114, 170, 40);
 		lbl_tbl_VationalCode.setBorder(border);
 		pnl_main.add(lbl_tbl_VationalCode);
 		
@@ -496,13 +509,13 @@ public class App implements Serializable{
 		lbl_tbl_Present.setOpaque(true);
 		lbl_tbl_Present.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_tbl_Present.setFont(new Font("Consolas", Font.BOLD, ۲۰));
-		lbl_tbl_Present.setBounds(820, 114, 90, 40);
+		lbl_tbl_Present.setBounds(920, 114, 90, 40);
 		lbl_tbl_Present.setBorder(border);
 		pnl_main.add(lbl_tbl_Present);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(0, 152, 1090, 602);
+		scrollPane.setBounds(0, 152, 1100, 602);
 		pnl_main.add(scrollPane);
 		
 		tbl = new JPanel();
@@ -735,14 +748,13 @@ public class App implements Serializable{
 		pnl_main.add(btnStopStart);
 		btnStopStart.setBorder(borders);
 		
-		JComboBox comboMonths = new JComboBox();
+		comboMonths = new JComboBox();
 		comboMonths.setForeground(new Color(242,170,76));
 		comboMonths.setBackground(new Color(16, 24, 32));
 		comboMonths.setMaximumRowCount(12);
 		comboMonths.setFont(new Font("Vazirmatn", Font.PLAIN, ۱۶));
 		comboMonths.setModel(new DefaultComboBoxModel(new String[] {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}));
 		comboMonths.setBounds(193, 30, 114, 30);
-		date_time = LocalDateTime.now();
 		comboMonths.setSelectedIndex(date_time.getMonthValue()-1);
 		panel.add(comboMonths);
 		
@@ -757,6 +769,15 @@ public class App implements Serializable{
 		lblNewLabel_5_1.setFont(new Font("Vazirmatn", Font.PLAIN, ۱۸));
 		lblNewLabel_5_1.setBounds(350, 68, 75, 36);
 		pnl_main.add(lblNewLabel_5_1);
+		
+		JLabel lbl_tbl_time = new JLabel("Time");
+		lbl_tbl_time.setOpaque(true);
+		lbl_tbl_time.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_tbl_time.setForeground(new Color(242, 170, 76));
+		lbl_tbl_time.setFont(new Font("Consolas", Font.BOLD, ۲۰));
+		lbl_tbl_time.setBackground(new Color(50, 50, 50));
+		lbl_tbl_time.setBounds(790, 114, 130, 40);
+		pnl_main.add(lbl_tbl_time);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBounds(863, 11, 259, 112);
@@ -775,27 +796,55 @@ public class App implements Serializable{
 			public void run() {
 				dateTime = LocalDateTime.now();
 				if(isPresentTime()) {
-					String presents = sendRequest("http://"+ESP_IP+"/present");
+					System.out.println("http://"+ESP_IP+"/present?date="+getFormatedSelectedDate());
+					String presents = sendRequest("http://"+ESP_IP+"/present?date="+getFormatedSelectedDate());
 					System.out.println(presents);
-					unpack_string(today_students, presents, '*');
+//					unpack_string(today_students, presents, '*');
+					if(presents.equals("error")) {
+						System.out.println("There is no present");
+					}
+					else if(!presents.equals(""))
+						unpackPresentList(presents);
 					System.out.println(today_students);
 					show();					
 				}
 			}
 		}, 3000, 5000); // after first 3s do the run code whit 5s delay
-		
+
 		dateTime = LocalDateTime.now();
 
 		Frame_Refresh();
 	}
 	
 	public boolean isPresentTime() {
-		int start_h = Integer.parseInt(pnl_Setting.spinner_of_start_hour.getValue().toString());
-		int start_m = Integer.parseInt(pnl_Setting.spinner_of_start_min.getValue().toString());
-		int end_h	= Integer.parseInt(pnl_Setting.spinner_of_end_hour.getValue().toString());
-		int end_m	= Integer.parseInt(pnl_Setting.spinner_of_end_min.getValue().toString());
+		int start_h = pnl_Setting.startPresentTime.h;
+		int start_m = pnl_Setting.startPresentTime.m;
+		int end_h	= pnl_Setting.endPresentTime.h;
+		int end_m	= pnl_Setting.endPresentTime.m;
 		int h = dateTime.getHour(), m=dateTime.getMinute();
 		return (isManualStarted || ((h > start_h || (h == start_h && m >= start_m)) && (h < end_h || (h == end_h && m <= end_m))));
+	}
+	
+	public boolean unpackPresentList(String json_str) {
+		JSONObject main_obj = new JSONObject(json_str);
+		JSONArray json_arr = main_obj.getJSONArray("present_list");
+		for (int i=0; i<main_obj.getInt("present_number"); i++) {
+			for(int j=0; j<classes.size(); j++) {
+				for(int k=0; k<classes.get(j).getStudents().size(); k++) {
+					if(json_arr.getJSONObject(i).getString("code").equals(classes.get(j).getStudents().get(k).getNationalCode())) {
+						today_students.add(classes.get(j).getStudents().get(k));
+//						today_students.get(today_students.size()-1).row.setText(""+today_students.size());
+						int h = json_arr.getJSONObject(i).getInt("h");
+						int m = json_arr.getJSONObject(i).getInt("m");
+						int s = json_arr.getJSONObject(i).getInt("s");
+						String formatedTime = ((h>10)? h:"0"+h)+":"+((m>10)? m:"0"+m)+":"+((s>10)? s:"0"+s);
+						today_students.get(today_students.size()-1).lblTime.setText(formatedTime);
+						break;
+					}
+				}
+			}
+		}
+		return true;
 	}
 	
 	// unpack the server response and put the extracted data to students lists
@@ -970,6 +1019,9 @@ public class App implements Serializable{
 		return "http://"+ESP_IP+"/add?FName="+textField_InputFirstName.getText()+"&LName="+textField_InputLastName.getText()+"&Number="+textField_InputNumberPhone.getText()+"&Code="+textField_InputNationalCode.getText();
 	}
 	
+	public String getFormatedSelectedDate() {
+		return ((int)spinnerYear.getValue()-2000)+"Y"+(comboMonths.getSelectedIndex()+1)+"M"+spinnerDay.getValue();
+	}
 	// send a HTTP request to the addrass and check the server response and return it
 	public static String sendRequest(String Addres) {
 		try {

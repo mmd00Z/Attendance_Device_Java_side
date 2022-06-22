@@ -46,6 +46,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Struct;
 import java.util.Scanner;
 
 import javax.swing.JToolBar;
@@ -56,6 +57,21 @@ public class Settings extends JPanel implements Serializable{
 	/**
 	 * 
 	 */
+	class PresentTime {
+		public int h;
+		public int m;
+		public int s;
+		public PresentTime(int h, int m, int s) {
+			this.h = h;
+			this.m = m;
+			this.s = s;
+		}
+		public PresentTime(int h, int m) {
+			this.h = h;
+			this.m = m;
+		}
+	}
+	
 	private static final long serialVersionUID = 5572715587414161627L;
 	private JFrame frame;
 	private JTextField networkNemeField;
@@ -114,6 +130,8 @@ public class Settings extends JPanel implements Serializable{
 	private static int x5 = 900;
 	//////////////////////////////////
 	public App app=null;
+	public PresentTime endPresentTime;
+	public PresentTime startPresentTime;
 
 	///////////////////////////////////////////////////////////////////////////////
 	public class MyActionListener_front implements ActionListener{
@@ -253,6 +271,8 @@ public class Settings extends JPanel implements Serializable{
 	}
 	
 	public Settings(App app) {
+		startPresentTime = new PresentTime(0, 0, 0);
+		endPresentTime = new PresentTime(0, 0, 0);
 		setBackground(new Color(40, 40, 40));
 		this.app = app;
 		setLayout(null);
@@ -505,6 +525,10 @@ public class Settings extends JPanel implements Serializable{
 		btnOK.setBackground(App.background_color);
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				startPresentTime.h = (int) spinner_of_start_hour.getValue();
+				startPresentTime.s = (int) spinner_of_start_min.getValue();
+				endPresentTime.h = (int) spinner_of_end_hour.getValue();
+				endPresentTime.s = (int) spinner_of_end_min.getValue();
 				System.out.println(format_addres());
 				if(App.sendRequest(format_addres()).equals("Settings saved!")) {
 					System.out.println("Settings saved!");
@@ -799,10 +823,15 @@ public class Settings extends JPanel implements Serializable{
 		textField_SaveDataByMonth.setText(obj.getString("storage_time"));
 		adminEmailField.setText(obj.getString("email_address"));
 		settingsPasswordField.setText(obj.getString("access_password"));
-		spinner_of_start_hour.setValue(obj.getBigInteger("start_hour"));
-		spinner_of_start_min.setValue(obj.getBigInteger("start_min"));
-		spinner_of_end_hour.setValue(obj.getBigInteger("end_hour"));
-		spinner_of_end_min.setValue(obj.getBigInteger("end_min"));
+		spinner_of_start_hour.setValue(obj.getInt("start_hour"));
+		spinner_of_start_min.setValue(obj.getInt("start_min"));
+		spinner_of_end_hour.setValue(obj.getInt("end_hour"));
+		spinner_of_end_min.setValue(obj.getInt("end_min"));
+		
+		startPresentTime.h = (int) spinner_of_start_hour.getValue();
+		startPresentTime.s = (int) spinner_of_start_min.getValue();
+		endPresentTime.h = (int) spinner_of_end_hour.getValue();
+		endPresentTime.s = (int) spinner_of_end_min.getValue();
 		
 		turn   = !obj.getBoolean("send_email");
 		turn_1 = !obj.getBoolean("ability_blind");;
