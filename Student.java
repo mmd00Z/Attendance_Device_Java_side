@@ -27,7 +27,7 @@ public class Student extends JPanel {
 	private String fatherName 	= null;
 	private String numberPhone 	= null;
 	private String className 	= null;
-	JLabel lblTime		= null;;
+	JLabel lblTime		= null;
 	JLabel lblView;
 	JLabel lblDelete;
 	private JLabel chekPresent;

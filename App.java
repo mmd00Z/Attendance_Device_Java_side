@@ -73,10 +73,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.DefaultComboBoxModel;
 
 public class App implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -329371300890119586L;
+	
 	private ArrayList <Student> today_students; // the present student in day
 	private ArrayList <SchoolClass> classes;
 	
@@ -166,7 +163,6 @@ public class App implements Serializable{
 		SchoolClass.loadClass(App.this, classes);
 		for(int i=0;i<classes.size();i++) {
 			classes.get(i).loadStudent();
-			System.out.println(classes.get(i).getStudents().size());
 		}
 		borders = BorderFactory.createLineBorder(new Color(242, 170, 76), 2);
 		Border bordersk = BorderFactory.createLineBorder(new Color(255, 255, 255), 1);
@@ -174,7 +170,7 @@ public class App implements Serializable{
 		frmJustDarkMode.setFont(new Font("Vazirmatn", Font.PLAIN, ۱۶));
 		frmJustDarkMode.setResizable(true);
 		frmJustDarkMode.getContentPane().setBackground(new Color(40, 40, 40));
-		frmJustDarkMode.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\sampad.jpg"));
+		frmJustDarkMode.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\Icons\\sampad.jpg"));
 		frmJustDarkMode.setTitle("دستگاه حضور و غیاب");
 		frmJustDarkMode.setResizable(false);
 		frmJustDarkMode.setBounds(-6, 0, 1550, 823);
@@ -200,7 +196,7 @@ public class App implements Serializable{
 		
 		JLabel btnNewButton = new JLabel("");
 		btnNewButton.setForeground(new Color(107, 142, 35));
-		btnNewButton.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\search-free-icon-font.png"));
+		btnNewButton.setIcon(new ImageIcon(".\\Icons\\search-free-icon-font.png"));
 		btnNewButton.setHorizontalAlignment(SwingConstants.CENTER);
 		btnNewButton.setBackground(new Color(16, 24, 32));
 		btnNewButton.setFont(new Font("Consolas", Font.BOLD, ۱۷));
@@ -224,6 +220,7 @@ public class App implements Serializable{
 		rdbtnToday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtnYesterday.setSelected(false);
+				spinnerDay.setValue(date_time.getDayOfMonth());
 			}
 		});
 		rdbtnToday.setFont(new Font("Tahoma", Font.PLAIN, ۱۴));
@@ -238,6 +235,7 @@ public class App implements Serializable{
 		rdbtnYesterday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtnToday.setSelected(false);
+				spinnerDay.setValue(date_time.getDayOfMonth()-1);
 			}
 		});
 		rdbtnYesterday.setFont(new Font("Tahoma", Font.PLAIN, ۱۴));
@@ -599,7 +597,7 @@ public class App implements Serializable{
 		pnl_StudentProfile.add(comboInputChooseClass_1);
 		
 		btnEdit = new JLabel("");
-		btnEdit.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\edit-free-icon-font.png"));
+		btnEdit.setIcon(new ImageIcon(".\\Icons\\edit-free-icon-font.png"));
 		btnEdit.setForeground(new Color(242, 170, 76));
 		btnEdit.addMouseListener(new MouseAdapter() {
 			@Override
@@ -667,14 +665,14 @@ public class App implements Serializable{
 				pnl_StudentProfile.setVisible(false);
 			}
 		});
-		lblNewLabel_2.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\cross-free-icon-font.png"));
+		lblNewLabel_2.setIcon(new ImageIcon(".\\Icons\\cross-free-icon-font.png"));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(361, 0, 30, 30);
 		pnl_StudentProfile.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\plus-free-icon-font.png"));
+		lblNewLabel.setIcon(new ImageIcon(".\\Icons\\plus-free-icon-font.png"));
 		lblNewLabel.setForeground(new Color(242, 170, 76));
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -712,7 +710,7 @@ public class App implements Serializable{
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\settings-free-icon-font.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(".\\Icons\\settings-free-icon-font.png"));
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -736,12 +734,12 @@ public class App implements Serializable{
 				else
 					System.out.println("Attendance is over");
 				if(isManualStarted)
-					btnStopStart.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\stop-free-icon-font.png"));					
+					btnStopStart.setIcon(new ImageIcon(".\\Icons\\stop-free-icon-font.png"));					
 				else
-					btnStopStart.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\play-free-icon-font.png"));
+					btnStopStart.setIcon(new ImageIcon(".\\Icons\\play-free-icon-font.png"));
 			}
 		});
-		btnStopStart.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\play-free-icon-font.png"));
+		btnStopStart.setIcon(new ImageIcon(".\\Icons\\play-free-icon-font.png"));
 		btnStopStart.setHorizontalAlignment(SwingConstants.CENTER);
 		btnStopStart.setForeground(new Color(242, 170, 76));
 		btnStopStart.setBounds(180, 0, 60, 60);
@@ -1054,40 +1052,40 @@ public class App implements Serializable{
 		return "";
 	}
 	
-	public void saveSettingsPanel(Settings s, String file_name) {
-		File f = new File(file_name);
-		FileOutputStream fos;
-		try {
-			fos = new FileOutputStream(f);
-			ObjectOutputStream o = new ObjectOutputStream(fos);
-			o.writeObject(s);
-			o.close();
-			fos.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public Settings loadSettingsPanel(String file_name) {
-		Settings s = null;
-		File fi = new File(file_name);
-		FileInputStream f;
-		try {
-			f = new FileInputStream(fi);
-			ObjectInputStream o = new ObjectInputStream(f);
-			s = (Settings) o.readObject();
-			o.close();
-			f.close();
-		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(s == null) 
-			s = new Settings(this);
-		return s;
-	}
+//	public void saveSettingsPanel(Settings s, String file_name) {
+//		File f = new File(file_name);
+//		FileOutputStream fos;
+//		try {
+//			fos = new FileOutputStream(f);
+//			ObjectOutputStream o = new ObjectOutputStream(fos);
+//			o.writeObject(s);
+//			o.close();
+//			fos.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
+//	
+//	public Settings loadSettingsPanel(String file_name) {
+//		Settings s = null;
+//		File fi = new File(file_name);
+//		FileInputStream f;
+//		try {
+//			f = new FileInputStream(fi);
+//			ObjectInputStream o = new ObjectInputStream(f);
+//			s = (Settings) o.readObject();
+//			o.close();
+//			f.close();
+//		} catch (IOException | ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		if(s == null) 
+//			s = new Settings(this);
+//		return s;
+//	}
 	
 	public void Frame_Refresh() {
 		frmJustDarkMode.revalidate();

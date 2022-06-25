@@ -142,7 +142,7 @@ public class Settings extends JPanel implements Serializable{
 				timer.stop();
 				remove(btnSendEmailToAdmin);
 				add(btnSendEmailToAdmin );
-				btnSendEmailToAdmin.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\red_on_button00small.png"));
+				btnSendEmailToAdmin.setIcon(new ImageIcon(".\\Icons\\red_on_button00small.png"));
 				turn=false;
 			}
 		}
@@ -155,7 +155,7 @@ public class Settings extends JPanel implements Serializable{
 				timer.stop();
 				remove(btnSendEmailToAdmin);
 				add(btnSendEmailToAdmin );
-				btnSendEmailToAdmin.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnSendEmailToAdmin.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				turn=true;
 			}
 		}
@@ -170,7 +170,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_1.stop();
 				remove(btnAbilityOfTheBlind);
 				add(btnAbilityOfTheBlind );
-				btnAbilityOfTheBlind.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\red_on_button00small.png"));
+				btnAbilityOfTheBlind.setIcon(new ImageIcon(".\\Icons\\red_on_button00small.png"));
 				turn_1=false;
 			}
 		}
@@ -183,7 +183,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_1.stop();
 				remove(btnAbilityOfTheBlind);
 				add(btnAbilityOfTheBlind);
-				btnAbilityOfTheBlind.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnAbilityOfTheBlind.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				turn_1=true;
 			}
 		}
@@ -197,7 +197,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_2.stop();
 				remove(btnMessagingToParents);
 				add(btnMessagingToParents);
-				btnMessagingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\red_on_button00small.png"));
+				btnMessagingToParents.setIcon(new ImageIcon(".\\Icons\\red_on_button00small.png"));
 				turn_2=false;
 			}
 		}
@@ -210,7 +210,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_2.stop();
 				remove(btnMessagingToParents);
 				add(btnMessagingToParents);
-				btnMessagingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnMessagingToParents.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				turn_2=true;
 			}
 		}
@@ -224,7 +224,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_3.stop();
 				remove(btnCallingingToParents);
 				add(btnCallingingToParents);
-				btnCallingingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\red_on_button00small.png"));
+				btnCallingingToParents.setIcon(new ImageIcon(".\\Icons\\red_on_button00small.png"));
 				turn_3=false;
 			}
 		}
@@ -237,7 +237,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_3.stop();
 				remove(btnCallingingToParents);
 				add(btnCallingingToParents);
-				btnCallingingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnCallingingToParents.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				turn_3=true;
 			}
 		}
@@ -251,7 +251,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_4.stop();
 				remove(btnNotification);
 				add(btnNotification);
-				btnNotification.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\red_on_button00small.png"));
+				btnNotification.setIcon(new ImageIcon(".\\Icons\\red_on_button00small.png"));
 				turn_4=false;
 			}
 		}
@@ -264,7 +264,7 @@ public class Settings extends JPanel implements Serializable{
 				timer_4.stop();
 				remove(btnNotification);
 				add(btnNotification);
-				btnNotification.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnNotification.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				turn_4=true;
 			}
 		}
@@ -360,17 +360,17 @@ public class Settings extends JPanel implements Serializable{
 				if(is_eye==true) {
 					networkPasswordField.setEchoChar((char) 0);
 					 is_eye = false;
-					 btnNewButton.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\eye-free-icon-font.png"));
+					 btnNewButton.setIcon(new ImageIcon(".\\Icons\\eye-free-icon-font.png"));
 					}
 					else  {
 						networkPasswordField.setEchoChar('•');
-					btnNewButton.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\eye-crossed-free-icon-font.png"));
+					btnNewButton.setIcon(new ImageIcon(".\\Icons\\eye-crossed-free-icon-font.png"));
 					 is_eye = true;
 					}
 			}
 		});
 
-		btnNewButton.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\eye-crossed-free-icon-font.png"));
+		btnNewButton.setIcon(new ImageIcon(".\\Icons\\eye-crossed-free-icon-font.png"));
 		btnNewButton.setBounds(540, 130, 45, 40);
 		add(btnNewButton);
 		
@@ -568,7 +568,7 @@ public class Settings extends JPanel implements Serializable{
 		add(rdbtnLight);
 		
 		JLabel btnBack = new JLabel("");
-		btnBack.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\arrow-small-left-free-icon-font.png"));
+		btnBack.setIcon(new ImageIcon(".\\Icons\\arrow-small-left-free-icon-font.png"));
 		btnBack.setHorizontalAlignment(SwingConstants.CENTER);
 		btnBack.setToolTipText("back");
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, ۱۸));
@@ -619,7 +619,7 @@ public class Settings extends JPanel implements Serializable{
 		add(rdbtnDark);
 		
 		JLabel btnNewButton_4 = new JLabel("");
-		btnNewButton_4.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\eye-crossed-free-icon-font.png"));
+		btnNewButton_4.setIcon(new ImageIcon(".\\Icons\\eye-crossed-free-icon-font.png"));
 		btnNewButton_4.setHorizontalAlignment(SwingConstants.CENTER);
 		btnNewButton_4.addMouseListener(new MouseAdapter() {
 			@Override
@@ -627,12 +627,12 @@ public class Settings extends JPanel implements Serializable{
 				if(is_eye_1==true) {
 					settingsPasswordField.setEchoChar((char) 0);
 					 is_eye_1 = false;
-					 btnNewButton_4.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\eye-free-icon-font.png"));
+					 btnNewButton_4.setIcon(new ImageIcon(".\\Icons\\eye-free-icon-font.png"));
 					}
 					else  {
 						settingsPasswordField.setEchoChar('•');
 					 is_eye_1 = true;
-					 btnNewButton_4.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\eye-crossed-free-icon-font.png"));
+					 btnNewButton_4.setIcon(new ImageIcon(".\\Icons\\eye-crossed-free-icon-font.png"));
 					}
 			}
 		});
@@ -640,7 +640,7 @@ public class Settings extends JPanel implements Serializable{
 		add(btnNewButton_4);
 		
 	    Circle = new JLabel("");
-		Circle.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture1small.png"));
+		Circle.setIcon(new ImageIcon(".\\Icons\\Picture1small.png"));
 		Circle.setBounds(308, 377, 26, 26);
 		add(Circle);
 		
@@ -654,12 +654,12 @@ public class Settings extends JPanel implements Serializable{
 		});
 		btnSendEmailToAdmin.setForeground(Color.WHITE);
 		btnSendEmailToAdmin.setBackground(Color.WHITE);
-		btnSendEmailToAdmin.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture2small.png"));
+		btnSendEmailToAdmin.setIcon(new ImageIcon(".\\Icons\\Picture2small.png"));
 		btnSendEmailToAdmin.setBounds(300, 370, 85, 40);
 		add(btnSendEmailToAdmin);
 		
 		Circle_1 = new JLabel("");
-		Circle_1.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture1small.png"));
+		Circle_1.setIcon(new ImageIcon(".\\Icons\\Picture1small.png"));
 		Circle_1.setBounds(308, 557, 26, 26);
 		add(Circle_1);
 		
@@ -672,14 +672,14 @@ public class Settings extends JPanel implements Serializable{
 			}
 		});
 		
-		btnAbilityOfTheBlind.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture2small.png"));
+		btnAbilityOfTheBlind.setIcon(new ImageIcon(".\\Icons\\Picture2small.png"));
 		btnAbilityOfTheBlind.setForeground(Color.WHITE);
 		btnAbilityOfTheBlind.setBackground(Color.WHITE);
 		btnAbilityOfTheBlind.setBounds(300, 550, 85, 40);
 		add(btnAbilityOfTheBlind);
 		
 		Circle_2 = new JLabel("");
-		Circle_2.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture1small.png"));
+		Circle_2.setIcon(new ImageIcon(".\\Icons\\Picture1small.png"));
 		Circle_2.setBounds(900, 17, 26, 26);
 		add(Circle_2);
 		
@@ -690,7 +690,7 @@ public class Settings extends JPanel implements Serializable{
 				clickToMessagingToParents();
 			}
 		});
-		btnMessagingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture2small.png"));
+		btnMessagingToParents.setIcon(new ImageIcon(".\\Icons\\Picture2small.png"));
 		btnMessagingToParents.setToolTipText("enable send email");
 		btnMessagingToParents.setForeground(Color.WHITE);
 		btnMessagingToParents.setBackground(Color.WHITE);
@@ -698,12 +698,12 @@ public class Settings extends JPanel implements Serializable{
 		add(btnMessagingToParents);
 		
 		Circle_3 = new JLabel("");
-		Circle_3.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture1small.png"));
+		Circle_3.setIcon(new ImageIcon(".\\Icons\\Picture1small.png"));
 		Circle_3.setBounds(900, 67, 26, 26);
 		add(Circle_3);
 		
 		btnCallingingToParents = new JLabel("");
-		btnCallingingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture2small.png"));
+		btnCallingingToParents.setIcon(new ImageIcon(".\\Icons\\Picture2small.png"));
 		btnCallingingToParents.setToolTipText("enable send email");
 		btnCallingingToParents.setForeground(Color.WHITE);
 		btnCallingingToParents.setBackground(Color.WHITE);
@@ -717,12 +717,12 @@ public class Settings extends JPanel implements Serializable{
 		});
 		
 		Circle_4 = new JLabel("");
-		Circle_4.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture1small.png"));
+		Circle_4.setIcon(new ImageIcon(".\\Icons\\Picture1small.png"));
 		Circle_4.setBounds(900, 377, 26, 26);
 		add(Circle_4);
 		
 		btnNotification = new JLabel("");
-		btnNotification.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\Picture2small.png"));
+		btnNotification.setIcon(new ImageIcon(".\\Icons\\Picture2small.png"));
 		btnNotification.setToolTipText("enable send email");
 		btnNotification.setForeground(Color.WHITE);
 		btnNotification.setBackground(Color.WHITE);
@@ -868,7 +868,7 @@ public class Settings extends JPanel implements Serializable{
 			timer_4.start();
 			turn_4=false;
 			if(is_first_4) {
-				btnNotification.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnNotification.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				is_first_4=false;
 			}
 		}	
@@ -885,7 +885,7 @@ public class Settings extends JPanel implements Serializable{
 			timer_3.start();
 			turn_3=false;
 			if(is_first_3) {
-				btnCallingingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+				btnCallingingToParents.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 				is_first_3=false;
 			}
 		}	
@@ -902,7 +902,7 @@ public class Settings extends JPanel implements Serializable{
 	        timer_2.start();
 	        turn_2=false;
 	        if(is_first_2) {
-	        	btnMessagingToParents.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+	        	btnMessagingToParents.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 	        	is_first_2=false;
 	        }
 		}	
@@ -919,7 +919,7 @@ public class Settings extends JPanel implements Serializable{
 	        timer_1.start();
 	        turn_1=false;
 	        if(is_first_1) {
-	        	btnAbilityOfTheBlind.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+	        	btnAbilityOfTheBlind.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 	        	is_first_1=false;
 	        }
 		}	
@@ -936,7 +936,7 @@ public class Settings extends JPanel implements Serializable{
 	        timer.start();
 	        turn=false;
 	        if(is_first) {
-	        	btnSendEmailToAdmin.setIcon(new ImageIcon("D:\\Programming\\Java\\dhgz\\dhgz\\Icons\\green_on_button00small.png"));
+	        	btnSendEmailToAdmin.setIcon(new ImageIcon(".\\Icons\\green_on_button00small.png"));
 	        	is_first=false;
 	        }
 		}
